@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from '../components/Icon.astro';
+
+interface Props {
+	project: CollectionEntry<'work'>;
+}
+
+const { data, slug } = Astro.props.project;
+---
+
+<div class="container">
+<a class="tittle" href={`${data.source}`}>{data.title}</a>
+<p class="description">{data.description}</p>
+<div>
+	<a class="bttn-source button" href={`${data.demo}`} target="_blank">Demo<Icon icon="arrowOut" /></a>
+	<a class="bttn-source button" href={`${data.source}`} target="_blank">Source<Icon icon="arrowOut" /></a>
+</div>
+</div>
+
+
+<style>
+	.container {
+		position: relative;
+		display: flex;
+	    flex-direction: column;
+		justify-content: space-between;
+		padding: 1.5rem;
+		box-sizing: border-box;
+	}
+
+	.container:hover {
+		box-shadow: var(--shadow-md);
+		border-radius: 1.5rem;
+
+	}
+	.tittle {
+		text-align: center;
+		background: var(--gray-999);
+		color: var(--gray-200);
+		border-radius: 1.5rem;
+		text-decoration: none;
+		font-size: 1.1rem;
+        font-weight: 500;
+		padding: 0.5rem 1rem;
+		font-family: var(--font-brand);
+		font-size: var(--text-lg);
+		font-weight: 500;
+	}
+
+	.description {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+
+	.bttn-source {
+		padding: 0.5rem 0.6rem;
+		font-size: .9rem;
+		text-decoration: none;
+	}
+
+    a.button {
+		align-items: center;
+		-webkit-appearance: none;
+		background-color: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: 6px;
+		color: var(--gray-200)
+		cursor: pointer;
+		display: inline-flex;
+		font-family: ;
+		font-size: 1rem;
+		font-weight: 500;
+		gap: 0.25rem;
+		letter-spacing: 0;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+
+</style>
